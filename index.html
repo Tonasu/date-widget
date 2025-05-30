@@ -1,42 +1,29 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<title>日付ウィジェット</title>
-<style>
-  body { font-family: sans-serif; text-align: center; margin: 20px; }
-  h1 { font-size: 1.5em; margin: 0.5em 0; }
-</style>
-</head>
-<body>
-  <h1 id="date"></h1>
-  <h1 id="wareki"></h1>
-  <h1 id="heisei"></h1>
-<script>
-  const today = new Date();
-  const y = today.getFullYear();
-  const m = today.getMonth() + 1;
-  const d = today.getDate();
-  document.getElementById("date").textContent = `西暦: ${y}年${m}月${d}日`;
+const today = new Date();
+const y = today.getFullYear();
+const m = today.getMonth() + 1;
+const d = today.getDate();
+const weekday = ["日", "月", "火", "水", "木", "金", "土"];
+const dayOfWeek = weekday[today.getDay()];
 
-  function getWareki(y, m, d) {
-    if (y > 2019 || (y === 2019 && m >= 5)) {
-      return `令和${y - 2018}年${m}月${d}日`;
-    } else if (y > 1989 || (y === 1989 && m >= 1)) {
-      return `平成${y - 1988}年${m}月${d}日`;
-    } else if (y > 1926 || (y === 1926 && m >= 12)) {
-      return `昭和${y - 1925}年${m}月${d}日`;
-    } else {
-      return `不明`;
-    }
-  }
-  document.getElementById("wareki").textContent = getWareki(y, m, d);
+document.getElementById("date").textContent = `西暦: ${y}年${m}月${d}日（${dayOfWeek}）`;
 
-  let heiseiText = "";
+function getWareki(y, m, d, dayOfWeek) {
   if (y > 2019 || (y === 2019 && m >= 5)) {
-    heiseiText = "平成は終わっています";
+    return `令和${y - 2018}年${m}月${d}日（${dayOfWeek}）`;
+  } else if (y > 1989 || (y === 1989 && m >= 1)) {
+    return `平成${y - 1988}年${m}月${d}日（${dayOfWeek}）`;
+  } else if (y > 1926 || (y === 1926 && m >= 12)) {
+    return `昭和${y - 1925}年${m}月${d}日（${dayOfWeek}）`;
   } else {
-    heiseiText = `平成${y - 1988}年`;
+    return `不明`;
   }
-  document.getElementById("heisei").textContent = `もし平成なら: ${heiseiText}`;
-</script>
+}
+document.getElementById("wareki").textContent = getWareki(y, m, d, dayOfWeek);
+
+let heiseiText = "";
+if (y > 2019 || (y === 2019 && m >= 5)) {
+  heiseiText = "平成は終わっています";
+} else {
+  heiseiText = `平成${y - 1988}年`;
+}
+document.getElementById("heisei").textContent = `もし平成なら: ${heiseiText}`;
