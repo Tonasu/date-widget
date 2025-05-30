@@ -33,9 +33,7 @@
   document.getElementById("wareki").textContent = getWareki(y, m, d);
 
   let heiseiText = "";
-  if (y > 2019 || (y === 2019 && m >= 5)) {
-    heiseiText = "平成は終わっています";
-  } else {
+  if (y > 2019 || (y === 2019 && m >= 5))  else {
     heiseiText = `平成${y - 1988}年`;
   }
   document.getElementById("heisei").textContent = `もし平成なら: ${heiseiText}`;
