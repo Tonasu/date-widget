@@ -1,4 +1,19 @@
-const today = new Date();
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>日付ウィジェット</title>
+<style>
+  body { font-family: sans-serif; text-align: center; margin: 20px; }
+  h1 { font-size: 1.5em; margin: 0.5em 0; }
+</style>
+</head>
+<body>
+  <h1 id="date"></h1>
+  <h1 id="wareki"></h1>
+  <h1 id="heisei"></h1>
+<script>
+  const today = new Date();
 const y = today.getFullYear();
 const m = today.getMonth() + 1;
 const d = today.getDate();
