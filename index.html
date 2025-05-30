@@ -38,3 +38,15 @@
     const heiseiYear = y - 1988;
     let heiseiText = "";
     if (y >= 2019 && m >= 5) {
+      // 令和のときだけ「もし平成なら」表示
+      heiseiText = `もし平成なら: 平成${heiseiYear}年`;
+    } else if (y >= 1989) {
+      // 平成時代なら、そのまま平成表示
+      heiseiText = `平成${heiseiYear}年`;
+    } else {
+      heiseiText = "平成以前です";
+    }
+    document.getElementById("heisei").textContent = heiseiText;
+  </script>
+</body>
+</html>
