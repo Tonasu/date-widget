@@ -15,14 +15,11 @@
     const m = today.getMonth() + 1;
     const d = today.getDate();
 
-    // 曜日を取得
     const weekday = ["日", "月", "火", "水", "木", "金", "土"];
     const dayOfWeek = weekday[today.getDay()];
 
-    // 西暦の表示
     document.getElementById("date").textContent = `西暦: ${y}年${m}月${d}日（${dayOfWeek}）`;
 
-    // 和暦の表示
     function getWareki(y, m, d, dayOfWeek) {
       if (y > 2019 || (y === 2019 && m >= 5)) {
         return `令和${y - 2018}年${m}月${d}日（${dayOfWeek}）`;
@@ -37,14 +34,7 @@
 
     document.getElementById("wareki").textContent = getWareki(y, m, d, dayOfWeek);
 
-    // もし平成なら
+    // もし平成だったら、という仮定だけ表示
+    const heiseiYear = y - 1988;
     let heiseiText = "";
-    if (y > 2019 || (y === 2019 && m >= 5)) {
-      heiseiText = "平成は終わっています";
-    } else {
-      heiseiText = `平成${y - 1988}年`;
-    }
-    document.getElementById("heisei").textContent = `もし平成なら: ${heiseiText}`;
-  </script>
-</body>
-</html>
+    if (y >= 2019 && m >= 5) {
